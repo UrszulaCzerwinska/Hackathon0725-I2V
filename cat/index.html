@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I2V Model Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @font-face {
+      font-family: 'Feature Display Text';
+      src: url('FeatureText-Regular-App.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'ROM';
+      src: url('ABCROM-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'ROM Mono';
+      src: url('ABCROMMono-Book.woff2') format('woff2'),
+           url('ABCROMMono-Book.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --jasper-red: #F24949;
+      --jasper-red-dark: #D93232;
+      --light-bg: #fdf6f6;
+      --card-bg: #fff;
+      --text: #23272f;
+      --muted: #43474c;
+      --border: #f2d6d6;
+    }
+    body {
+      font-family: 'ROM', Arial, sans-serif;
+      background: var(--light-bg);
+      margin: 0;
+      padding: 0 0 40px 0;
+      color: var(--text);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+      padding: 36px 36px 30px 36px;
+    }
+    h1 {
+      text-align: center;
+      letter-spacing: 1px;
+      color: var(--jasper-red);
+      font-family: 'Feature Display Text', Arial, sans-serif;
+      font-weight: normal;
+      font-size: 2.3rem;
+      margin-bottom: 38px;
+    }
+    .main-image {
+      display: block;
+      margin: 0 auto 44px auto;
+      border-radius: 12px;
+      max-width: 320px;
+      box-shadow: 0 2px 16px 0 rgba(60,60,60,0.09);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    .video-card {
+      background: #fff6f6;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px 0 rgba(242,73,73,0.07);
+      padding: 26px 16px 18px 16px;
+      border: 1.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s, border 0.2s;
+    }
+    .video-card:hover {
+      box-shadow: 0 6px 28px 0 rgba(242,73,73,0.14);
+      border-color: var(--jasper-red);
+    }
+    .model-title {
+      font-family: 'Feature Display Text', Arial, sans-serif;
+      font-size: 1.18rem;
+      font-weight: normal;
+      color: var(--jasper-red-dark);
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+    video {
+      width: 100%;
+      max-width: 390px;
+      border-radius: 9px;
+      box-shadow: 0 2px 12px 0 rgba(242,73,73,0.04);
+      background: #222;
+      outline: 2px solid var(--jasper-red);
+      outline-offset: 2px;
+      margin-bottom: 8px;
+      object-fit: cover;
+    }
+    .prompt {
+      font-size: 1rem;
+      color: var(--muted);
+      font-family: 'ROM';
+      text-align: center;
+      margin-bottom: 0;
+      margin-top: 6px;
+    }
+    @media (max-width: 800px) {
+      .container {
+        padding: 8px;
+      }
+      .grid {
+        gap: 20px;
+      }
+    }
+    @media (max-width: 500px) {
+      h1 { font-size: 1.3rem; }
+      .main-image { max-width: 95vw; }
+      .video-card { padding: 10px 3px 8px 3px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Animate the cat !</h1>
+    <!-- Optional: source image at the top -->
+    <img class="main-image" src="cat.png" alt="Source image">
+
+    <div class="grid">
+      <!-- Each card is a video with title and prompt -->
+      <div class="video-card">
+        <div class="model-title">Gen 4 turbo – Runway</div>
+        <video src="results/Gen4Turbo_runway.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">the handheld camera tracks the cat as it tilts the head</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">minimax/hailuo-02</div>
+        <video src="results/hailuo2.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">the camera is following the cat. The cat tilts its head to the right</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">Ray 2 Luma AI</div>
+        <video src="results/ray2_lumaai.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">the handheld camera tracks the cat as it tilts its head.</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">LTX video 13B</div>
+        <video src="results/LTX.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">A fixed camera shot of a black-and-white cat resting its paws on bamboo, against a flat green background. The cat is perfectly still except for its head, which slowly turns to the right, pausing to observe something unseen. The scene is quiet and minimal, with gentle, even lighting and a shallow depth of field</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">LTX video 13B distilled</div>
+        <video src="results/LTX-distilled.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">A fixed camera shot of a black-and-white cat resting its paws on bamboo, against a flat green background. The cat is perfectly still except for its head, which slowly turns to the right, pausing to observe something unseen. The scene is quiet and minimal, with gentle, even lighting and a shallow depth of field</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">Wan 2.1 14B</div>
+        <video src="results/Wan2.114B.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">A fixed camera shot of a black-and-white cat resting its paws on bamboo, against a flat green background. The cat is perfectly still except for its head, which slowly turns to the right, pausing to observe something unseen. The scene is quiet and minimal, with gentle, even lighting and a shallow depth of field</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">Wan Fun InP</div>
+        <video src="results/WanFunInP.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">A fixed camera shot of a black-and-white cat resting its paws on bamboo, against a flat green background. The cat is perfectly still except for its head, which slowly turns to the right, pausing to observe something unseen. The scene is quiet and minimal, with gentle, even lighting and a shallow depth of field</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">Wan FLF</div>
+        <video src="results/WanFLF.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">A fixed camera shot of a black-and-white cat resting its paws on bamboo, against a flat green background. The cat is perfectly still except for its head, which slowly turns to the right, pausing to observe something unseen. The scene is quiet and minimal, with gentle, even lighting and a shallow depth of field</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">Pusa v1</div>
+        <video src="results/Pusav1.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">A fixed camera shot of a black-and-white cat resting its paws on bamboo, against a flat green background. The cat is perfectly still except for its head, which slowly turns to the right, pausing to observe something unseen. The scene is quiet and minimal, with gentle, even lighting and a shallow depth of field</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">Dynamic Crafter</div>
+        <video src="results/DC.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">the cat turns the head to the right</div>
+      </div>
+      <div class="video-card">
+        <div class="model-title">Cinemo</div>
+        <video src="results/Cinemo.mp4" autoplay loop muted playsinline></video>
+        <div class="prompt">the cat turns the head to the right</div>
+      </div>
+      <!-- Add more video-cards here as needed -->
+    </div>
+  </div>
+</body>
+</html>
